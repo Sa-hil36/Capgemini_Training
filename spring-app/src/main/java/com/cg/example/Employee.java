@@ -1,9 +1,14 @@
 package com.cg.example;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Employee {
     private int empid;
     private String name;
+    @Autowired
+    @Qualifier("add1")
     private Address address;
 
     public int getEmpid() {
@@ -32,7 +37,7 @@ public class Employee {
     public void printEmployeeDetails(){
         System.out.println("Employee ID:" + empid);
         System.out.println("Employee name: " + name);
-        System.out.println("   Address     ");
+        System.out.println("=====Address======");
         System.out.println("City: "+ address.getCity());
         System.out.println("Country: "+ address.getCountry());
         System.out.println("zip: "+ address.getZip());

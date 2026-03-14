@@ -1,13 +1,21 @@
 package com.cg.java;
 
-public class EmployeeMain {
+/*
+        *
+        * @author Jon Doe
+*/
+public class EmployeeMainAUtility {
+    /*
+     *
+     * @author Jon Doe
+     */
     public static void main(String[] args) {
-        Employee e = new Employee();
-        e.setEmpid(101);
-        e.setName("Amit");
-        e.setEmail("amit@gmail.com");
-        System.out.println("EmployeeID"+ e.getEmpid());
-        System.out.println("EmployeeName"+ e.getName());
-        System.out.println("EmployeeEmail"+ e.getEmail());
+        Employee employee = new Employee();
+        employee.setEmpid(101);
+        employee.setName("Amit");
+        employee.setEmail("amit@gmail.com");
+        System.out.println("EmployeeID"+ employee.getEmpid());
+        System.out.println("EmployeeName"+ employee.getName());
+        System.out.println("EmployeeEmail"+ employee.getEmail());
     }
 }

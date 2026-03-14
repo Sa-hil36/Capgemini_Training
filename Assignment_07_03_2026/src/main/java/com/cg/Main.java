@@ -46,6 +46,7 @@ public class Main {
                     s.intsert(a, b);
                     break;
                 case 2:
+                    System.out.println("Enter Author");
                     d.fetchAuthor();
                     break;
 

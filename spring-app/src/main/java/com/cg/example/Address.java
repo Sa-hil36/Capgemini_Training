@@ -28,4 +28,13 @@ public class Address {
     public void setZip(int zip) {
         this.zip = zip;
     }
+
+    public Address(String city, String country, int zip) {
+        this.city = city;
+        this.country = country;
+        this.zip = zip;
+    }
+
+    public Address() {
+    }
 }
