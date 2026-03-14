@@ -5,33 +5,5 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
 
-    <bean id = "hello" class="com.cg.bean.HelloWorld" scope="prototype">
-        <property name="name" value="Swati"/>
-        <property name="language">
-            <list>
-                <value>Hindi</value>
-                <value>English</value>
-                <value>Sanskrit</value>
-            </list>
-        </property>
-        <!--            <constructor-arg name="name" value="Mansi"></constructor-arg>-->
-    </bean>
-    <bean id="e" class="com.cg.example.Employee" autowire="byName">
-        <property name="empid" value="1001"/>
-        <property name="name" value="Jaladhi"></property>
-        <!--        <property name="address" ref="add"/>-->
-    </bean>
-    <bean id="add" class="com.cg.example.Address">
-        <constructor-arg name="city" value="Noida"> </constructor-arg>
-        <constructor-arg name="country" value="India"></constructor-arg>
-        <constructor-arg name="zip" value="201306"></constructor-arg>
-        <!--    <property name="city" value="Noida"/>-->
-        <!--    <property name="country" value="India"/>-->
-        <!--    <property name="zip" value="201306"/>-->
-    </bean>
-    <bean id="address" class="com.cg.example.Address">
-        <property name="city" value="Gurgoan"/>
-        <property name="country" value="India"/>
-        <property name="zip" value="201306"/>
-    </bean>
+    <bean id="emp" />
 </beans>
