@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+    <bean id="emp1" class="org.ProblemStatement.three.Employee">
+        <property name="empId" value="101"/>
+        <property name="empName" value="Ravi"/>
+        <property name="salary" value="50000"/>
+    </bean>
+
+    <bean id="emp2" class="org.ProblemStatement.three.Employee">
+        <property name="empId" value="102"/>
+        <property name="empName" value="Amit"/>
+        <property name="salary" value="60000"/>
+    </bean>
+
+    <bean id="sbu" class="org.ProblemStatement.three.SBU">
+        <property name="sbuId" value="1"/>
+        <property name="sbuName" value="PES-BU"/>
+        <property name="sbuHead" value="Anil"/>
+
+        <property name="empList">
+            <list>
+                <ref bean="emp1"/>
+                <ref bean="emp2"/>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>
