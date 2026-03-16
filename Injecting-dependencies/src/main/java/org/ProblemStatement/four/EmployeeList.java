@@ -2,7 +2,7 @@ package org.ProblemStatement.four;
 
 import java.util.List;
 
-public class EmployeeService {
+public class EmployeeList {
     private List<Employee> empList;
 
     public void setEmpList(List<Employee> empList) {

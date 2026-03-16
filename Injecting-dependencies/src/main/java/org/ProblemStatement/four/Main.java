@@ -8,18 +8,16 @@ import java.util.Scanner;
 public class Main{
         public static void main(String[] args) {
 
-            ApplicationContext context =
-                    new ClassPathXmlApplicationContext("bean4.xml");
+            ApplicationContext context = new ClassPathXmlApplicationContext("bean4.xml");
 
-            EmployeeService service =
-                    (EmployeeService) context.getBean("empService");
+            EmployeeList list = (EmployeeList) context.getBean("empService");
 
             Scanner sc = new Scanner(System.in);
 
             System.out.print("Employee ID : ");
             int id = sc.nextInt();
 
-            service.displayEmployee(id);
+            list.displayEmployee(id);
         }
     }
 

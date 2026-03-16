@@ -16,7 +16,7 @@
         <property name="salary" value="45000"/>
     </bean>
 
-    <bean id="empService" class="org.ProblemStatement.four.EmployeeService">
+    <bean id="empService" class="org.ProblemStatement.four.EmployeeList">
         <property name="empList">
             <list>
                 <ref bean="emp1"/>

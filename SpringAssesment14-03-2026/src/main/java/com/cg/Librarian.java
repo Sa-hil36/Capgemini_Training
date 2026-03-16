@@ -37,8 +37,8 @@ public class Librarian {
 
     public void issueBook() {
 
-        System.out.println("Librarian: " + name);
-        System.out.println("Issued Book Details: ");
+        System.out.println("Librarian : " + name);
+        System.out.println("Issued Book Details : ");
         book.displayBookDetails();
     }
 }
