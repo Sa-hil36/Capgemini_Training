@@ -1,9 +1,11 @@
 package com.cg.controller;
 
 import com.cg.dto.EmployeeDTO;
+import com.cg.dto.EntityMapper;
 import com.cg.service.EmployeeService;
 import com.cg.service.IEmployeeService;
 import com.cg.entity.Employee;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -24,14 +26,15 @@ public class EmployeeController {
     }
     @GetMapping("/{eid}")
     public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable int eid){
-        return ResponseEntity<EmployeeDTO>(service.getEmployee(), HttpStatus.OK);
+        EmployeeDTO e = service.getEmployee(eid);
+        return new ResponseEntity<EmployeeDTO>(e, HttpStatus.OK);
     }
     @GetMapping("/name/{name}")
     public List<EmployeeDTO> getEmployeeByName(@PathVariable String name){
         return service.getEmployeeByName(name);
     }
     @PostMapping(consumes = {"application/xml", "application/json"})
-    public EmployeeDTO createNewEmployee(@RequestBody Employee emp){
+    public EmployeeDTO createNewEmployee(@RequestBody @Valid EmployeeDTO emp){
         return service.createEmployee(emp);
     }
     @DeleteMapping("/delete/{empid}")

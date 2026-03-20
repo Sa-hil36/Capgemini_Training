@@ -17,7 +17,7 @@ public class Employee {
     private String name;
     @JsonFormat(pattern = "dd-MMM-yyyy")
     private LocalDate dob;
-    private double salary;
+    private Double salary;
 
     public String getName() {
         return name;
@@ -39,7 +39,7 @@ public class Employee {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 
@@ -51,7 +51,7 @@ public class Employee {
         this.emp_id = empid;
     }
 
-    public Employee(String name, LocalDate dob, double salary) {
+    public Employee(String name, LocalDate dob, Double salary) {
         this.name = name;
         this.dob = dob;
         this.salary = salary;

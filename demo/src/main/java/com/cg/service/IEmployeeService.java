@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IEmployeeService {
     public List<EmployeeDTO> getAllEmployee();
-    public EmployeeDTO createEmployee(Employee emp);
+    public EmployeeDTO createEmployee(EmployeeDTO emp);
     public EmployeeDTO getEmployee(int empid);
     public String removeEmployee(int empid);
     public Employee updateEmployee(Employee e);

@@ -7,6 +7,9 @@ public class EntityMapper {
         return new Employee(edto.getFullName(),edto.getDateofbirth(),edto.getSalary());
     }
     public static EmployeeDTO convertEntityToDTO(Employee emp){
-        return new EmployeeDTO( emp.getName(), emp.getDob(), emp.getSalary());
+        EmployeeDTO edto = new EmployeeDTO(emp.getName(), emp.getDob(), emp.getSalary());
+        edto.setEmployeeId(emp.getEmp_id());
+        return edto;
+
     }
 }

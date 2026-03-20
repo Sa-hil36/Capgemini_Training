@@ -7,6 +7,7 @@ import com.cg.entity.Employee;
 import com.cg.repo.IEmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +26,9 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public EmployeeDTO createEmployee(Employee emp) {
-        repo.saveAndFlush(emp);
-        return EntityMapper.convertEntityToDTO(emp);
+    public EmployeeDTO createEmployee(EmployeeDTO emp) {
+        repo.saveAndFlush(EntityMapper.convertObjectToEntity(emp));
+        return emp;
     }
 
     @Override
