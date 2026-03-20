@@ -1,9 +1,13 @@
 package com.cg.controller;
 
+import com.cg.dto.EmployeeDTO;
 import com.cg.service.EmployeeService;
 import com.cg.service.IEmployeeService;
 import com.cg.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,20 +18,20 @@ import java.util.Optional;
 public class EmployeeController {
     @Autowired
     private IEmployeeService service;
-    @GetMapping("/")
-    public List<Employee> getAllEmployee(){
+    @GetMapping(produces = {"application/json","application/xml"})
+    public List<EmployeeDTO> getAllEmployee(){
         return service.getAllEmployee();
     }
     @GetMapping("/{eid}")
-    public Optional<Employee> getEmployee(@PathVariable int eid){
-        return service.getEmployee(eid);
+    public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable int eid){
+        return ResponseEntity<EmployeeDTO>(service.getEmployee(), HttpStatus.OK);
     }
     @GetMapping("/name/{name}")
-    public List<Employee> getEmployeeByName(@PathVariable String name){
+    public List<EmployeeDTO> getEmployeeByName(@PathVariable String name){
         return service.getEmployeeByName(name);
     }
-    @PostMapping("/")
-    public Employee createNewEmployee(@RequestBody Employee emp){
+    @PostMapping(consumes = {"application/xml", "application/json"})
+    public EmployeeDTO createNewEmployee(@RequestBody Employee emp){
         return service.createEmployee(emp);
     }
     @DeleteMapping("/delete/{empid}")

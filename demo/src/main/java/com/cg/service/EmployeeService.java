@@ -1,10 +1,14 @@
 package com.cg.service;
 
+import com.cg.Exception.EmployeeNotFoundException;
+import com.cg.dto.EntityMapper;
+import com.cg.dto.EmployeeDTO;
 import com.cg.entity.Employee;
 import com.cg.repo.IEmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,19 +16,28 @@ import java.util.Optional;
 public class EmployeeService implements IEmployeeService {
     @Autowired
     private IEmployeeRepo repo;
-    public List<Employee> getAllEmployee(){
-        return repo.findAll();
+    public List<EmployeeDTO> getAllEmployee(){
+        List<Employee> emps = repo.findAll();
+        List<EmployeeDTO> employers = new ArrayList<>();
+
+        emps.forEach(e-> employers.add(EntityMapper.convertEntityToDTO(e)));
+        return employers;
     }
 
     @Override
-    public Employee createEmployee(Employee emp) {
+    public EmployeeDTO createEmployee(Employee emp) {
         repo.saveAndFlush(emp);
-        return emp;
+        return EntityMapper.convertEntityToDTO(emp);
     }
 
     @Override
-    public Optional<Employee> getEmployee(int empid) {
-        return repo.findById(empid);
+    public EmployeeDTO getEmployee(int empid) {
+        Optional<Employee> op = repo.findById(empid);
+        if(op.isPresent()){
+            return EntityMapper.convertEntityToDTO(op.get());
+        }else {
+            throw new EmployeeNotFoundException("Employee not Exist");
+        }
     }
 
     @Override
@@ -42,8 +55,11 @@ public class EmployeeService implements IEmployeeService {
         }
     }
 
-    public List<Employee> getEmployeeByName(String name){
-        return repo.findByName(name);
+    public List<EmployeeDTO> getEmployeeByName(String name){
+        List<Employee> emps = repo.findByName(name);
+        List<EmployeeDTO> employees = new ArrayList<EmployeeDTO>();
+        emps.forEach(e->employees.add(EntityMapper.convertEntityToDTO(e)));
+        return employees;
     }
 
 
