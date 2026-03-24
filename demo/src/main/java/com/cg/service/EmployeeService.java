@@ -48,11 +48,16 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(Employee e) {
-        if(getEmployee(e.getEmp_id())!=null) {
-            return repo.saveAndFlush(e);
-        }else {
-            return null;
+    public EmployeeDTO updateEmployee(EmployeeDTO e) {
+
+        Optional<Employee> op = repo.findById(e.getEmployeeId());
+
+        if(op.isPresent()) {
+            Employee emp = EntityMapper.convertObjectToEntity(e);
+            Employee updated = repo.saveAndFlush(emp);
+            return EntityMapper.convertEntityToDTO(updated);
+        } else {
+            throw new EmployeeNotFoundException("Employee not Exist");
         }
     }
 

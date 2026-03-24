@@ -11,6 +11,6 @@ public interface IEmployeeService {
     public EmployeeDTO createEmployee(EmployeeDTO emp);
     public EmployeeDTO getEmployee(int empid);
     public String removeEmployee(int empid);
-    public Employee updateEmployee(Employee e);
+    public EmployeeDTO updateEmployee(EmployeeDTO e);
     public List<EmployeeDTO> getEmployeeByName(String name);
 }
